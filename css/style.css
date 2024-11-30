@@ -8,10 +8,14 @@
 .display-3 {
     color: var(--primary); /* Set color to a shade of blue */
   }
+
 .mb {
     color: var(--dark); /* Apply a blue color */
     font-weight: bold; 
-  }
+    position: relative; /* Enable positioning */
+    top: -90px; /* Move the text upwards */
+}
+
 .typed-text-output {
     color: var(--primary); /* Set text color to red */
   }
@@ -25,6 +29,8 @@
     bottom: 45px;
     z-index: 99;
 }
+
+
 
 .my-6 {
     margin-top: 6rem;
