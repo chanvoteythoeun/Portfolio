@@ -125,12 +125,31 @@
 })(jQuery);
 
 function submitFormAndOpenMessenger() {
-    // Submit the form (if any form is present)
-    // document.forms[0].submit();  // Uncomment this if you have a form to submit
-    
-    // Open Messenger link in a new window/tab
-    window.open('https://www.messenger.com/t/100089222071546', '_blank');
+    // Get form field values
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+
+    // Validation check (ensure all fields are filled in)
+    if (!name || !email || !message) {
+        alert("Please fill in all fields.");
+        return;  // Stop if validation fails
+    }
+
+    // Construct a pre-filled message for Messenger
+    const prefilledMessage = `Request from: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`;
+
+    // Encode the message to safely include in the URL
+    const encodedMessage = encodeURIComponent(prefilledMessage);
+
+    // Messenger URL with pre-filled message
+    const messengerUrl = `https://www.messenger.com/t/100089222071546?message=${encodedMessage}`;
+
+    // Open Messenger link with the pre-filled message
+    window.open(messengerUrl, '_blank');
 }
+
 
 
 
