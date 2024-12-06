@@ -124,3 +124,13 @@
     
 })(jQuery);
 
+function submitFormAndOpenMessenger() {
+    // Submit the form (if any form is present)
+    // document.forms[0].submit();  // Uncomment this if you have a form to submit
+    
+    // Open Messenger link in a new window/tab
+    window.open('https://www.messenger.com/t/100089222071546', '_blank');
+}
+
+
+
