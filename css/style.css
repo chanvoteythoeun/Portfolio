@@ -557,6 +557,7 @@ p {
     border-radius: 22px;
     box-shadow: 0 22px 58px rgba(232, 62, 140, 0.13);
     transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    cursor: pointer;
 }
 
 #project-grid .portfolio-item,
@@ -642,6 +643,8 @@ p {
 }
 
 .project-footer {
+    position: relative;
+    z-index: 6;
     margin-top: auto;
     display: flex;
     align-items: center;
@@ -671,6 +674,8 @@ p {
 }
 
 .project-arrow {
+    position: relative;
+    z-index: 20;
     width: 46px;
     height: 46px;
     flex: 0 0 46px;
@@ -682,6 +687,8 @@ p {
     border-radius: 50%;
     border: 1px solid rgba(232, 62, 140, .22);
     box-shadow: 0 12px 26px rgba(232, 62, 140, .12);
+    pointer-events: auto !important;
+    touch-action: manipulation;
     transition: .25s ease;
 }
 
@@ -1950,6 +1957,172 @@ body::after {
     }
 }
 
+/********** Final Project Detail Mobile Hotfix **********/
+@media only screen and (max-width: 767.98px) {
+    #project-detail {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    #project-detail .detail-back {
+        width: 100% !important;
+        margin-bottom: 16px !important;
+        padding: 12px 14px !important;
+        text-align: left !important;
+        background: rgba(255, 255, 255, .92) !important;
+        border: 1px solid rgba(248, 199, 220, .9) !important;
+        border-radius: 14px !important;
+    }
+
+    #project-detail .detail-layout,
+    #project-detail .detail-bottom-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        width: 100% !important;
+    }
+
+    #project-detail .detail-main,
+    #project-detail .detail-sidebar {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    #project-detail .detail-title-row {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    #project-detail .detail-title-row h2 {
+        max-width: 100% !important;
+        margin-bottom: 12px !important;
+        font-size: clamp(2rem, 9.5vw, 2.65rem) !important;
+        line-height: 1.08 !important;
+        word-break: normal !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    #project-detail .detail-title-row h2 span {
+        width: 42px !important;
+        height: 42px !important;
+        margin-left: 6px !important;
+        border-radius: 14px !important;
+        font-size: 1.45rem !important;
+    }
+
+    #project-detail .detail-title-row p {
+        max-width: 100% !important;
+        font-size: .98rem !important;
+        line-height: 1.65 !important;
+    }
+
+    #project-detail .detail-tags {
+        gap: 8px !important;
+    }
+
+    #project-detail .detail-tags span,
+    #project-detail .detail-tech-list span {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-width: 0 !important;
+        width: auto !important;
+        max-width: 100% !important;
+        white-space: normal !important;
+        word-break: normal !important;
+        overflow-wrap: anywhere !important;
+        writing-mode: horizontal-tb !important;
+        text-orientation: mixed !important;
+        line-height: 1.25 !important;
+    }
+
+    #project-detail .detail-hero {
+        width: 100% !important;
+        padding: 8px !important;
+        aspect-ratio: 16 / 10 !important;
+        border-radius: 16px !important;
+    }
+
+    #project-detail .detail-hero img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 12px !important;
+    }
+
+    #project-detail .detail-thumbs {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    #project-detail .detail-thumbs img {
+        height: 88px !important;
+        min-width: 0 !important;
+        padding: 4px !important;
+    }
+
+    #project-detail .detail-panel {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 18px !important;
+        border-radius: 16px !important;
+    }
+
+    #project-detail .detail-panel h3 {
+        font-size: 1.1rem !important;
+        line-height: 1.3 !important;
+    }
+
+    #project-detail .detail-panel p,
+    #project-detail .detail-panel li {
+        font-size: .92rem !important;
+        line-height: 1.6 !important;
+    }
+
+    #project-detail .detail-panel ul,
+    #project-detail .feature-list,
+    #project-detail .detail-tech-list {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+    }
+
+    #project-detail .info-row {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 3px !important;
+        padding: 9px 0 !important;
+    }
+
+    #project-detail .info-row strong {
+        overflow-wrap: anywhere !important;
+    }
+
+    #project-detail .detail-project-nav {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+        padding: 16px !important;
+        text-align: left !important;
+    }
+
+    #project-detail .detail-project-nav span,
+    #project-detail .detail-project-nav span:last-child {
+        text-align: left !important;
+    }
+
+    #project-detail .detail-project-nav button {
+        width: 100% !important;
+        padding: 12px !important;
+        border-radius: 12px !important;
+        background: #ffe3f0 !important;
+    }
+}
+
 /********** Final Hero Mobile Type Hotfix **********/
 @media only screen and (max-width: 767.98px) {
     #home .display-3 {
@@ -2010,6 +2183,7 @@ body::after {
         width: 100% !important;
         padding: 14px !important;
         border-radius: 20px !important;
+        touch-action: manipulation !important;
     }
 
     #project-grid .project-image {
@@ -2065,8 +2239,17 @@ body::after {
     }
 
     #project-grid .project-arrow {
-        width: 44px !important;
+        width: auto !important;
         height: 44px !important;
-        flex: 0 0 44px !important;
+        flex: 0 0 auto !important;
+        padding: 0 14px !important;
+        gap: 8px !important;
+        border-radius: 999px !important;
+    }
+
+    #project-grid .project-arrow::before {
+        content: "View";
+        font-size: .78rem;
+        font-weight: 900;
     }
 }

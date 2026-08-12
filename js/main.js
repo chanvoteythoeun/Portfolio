@@ -453,7 +453,7 @@
             var index = projects.indexOf(project);
             var image = escapeHtml(project.image);
             return '<div class="col-xl-4 col-lg-4 col-md-6 col-12 portfolio-item ' + project.category + '">' +
-                '<div class="project-card">' +
+                '<div class="project-card js-project-card" data-project-index="' + index + '" onclick="window.openProjectDetailByIndex(' + index + '); return false;" role="button" tabindex="0" aria-label="View ' + escapeHtml(project.title) + ' details">' +
                 '<div class="project-image">' +
                 '<span class="project-badge">' + escapeHtml(project.badge) + '</span>' +
                 '<img class="img-fluid" src="' + image + '" alt="' + escapeHtml(project.title) + '">' +
@@ -466,7 +466,7 @@
                     return '<span>' + escapeHtml(item) + '</span>';
                 }).join('') + '</div>' +
                 (project.info
-                    ? '<button class="project-arrow js-project-detail" type="button" data-project-index="' + index + '" aria-label="View ' + escapeHtml(project.title) + ' details"><i class="fa fa-arrow-right"></i></button>'
+                    ? '<button class="project-arrow js-project-detail" type="button" data-project-index="' + index + '" onclick="event.stopPropagation(); window.openProjectDetailByIndex(' + index + '); return false;" aria-label="View ' + escapeHtml(project.title) + ' details"><i class="fa fa-arrow-right"></i></button>'
                     : '<a class="project-arrow" href="' + image + '" data-lightbox="portfolio" aria-label="View ' + escapeHtml(project.title) + '"><i class="fa fa-arrow-right"></i></a>') +
                 '</div>' +
                 '</div>' +
@@ -501,7 +501,6 @@
             '<div class="detail-main">' +
             '<div class="detail-title-row">' +
             '<div><h2>' + escapeHtml(project.title) + ' <span>' + project.emoji + '</span></h2><p>' + escapeHtml(project.description) + '</p></div>' +
-            '<div class="detail-actions"><a href="' + escapeHtml(project.image) + '" data-lightbox="portfolio">Live Demo <i class="fa fa-external-link-alt"></i></a><button type="button"><i class="fab fa-github"></i> View Code</button></div>' +
             '</div>' +
             '<div class="detail-tags">' + project.tech.map(function (tag) { return '<span>' + escapeHtml(tag) + '</span>'; }).join('') + '</div>' +
             '<div class="detail-hero"><img src="' + escapeHtml(project.image) + '" alt="' + escapeHtml(project.title) + ' detail preview"></div>' +
@@ -547,21 +546,74 @@
         $('.project-heading .col-lg-6:first').append('<p>Here are some of the projects I have worked on. Each one reflects my passion for developing beautiful and functional solutions.</p>');
     }
 
-    $(document).on('click', '.js-project-detail', function () {
-        var project = projects[$(this).data('project-index')];
+    function scrollToProjectSection() {
+        var projectSection = document.getElementById('project');
+        if (!projectSection) {
+            return;
+        }
+
+        var top = projectSection.getBoundingClientRect().top + window.pageYOffset - 75;
+        window.scrollTo(0, top);
+    }
+
+    function openProjectDetail(index) {
+        var project = projects[index];
+        var projectGrid = document.getElementById('project-grid');
+        var projectHeading = document.querySelector('.project-heading');
+        var projectDetail = document.getElementById('project-detail');
+
         if (!project) {
             return;
         }
+
         renderProjectDetail(project);
-        $('#project-grid, .project-heading').hide();
-        $('#project-detail').prop('hidden', false);
-        $('html, body').animate({ scrollTop: $('#project').offset().top - 75 }, 700, 'easeInOutExpo');
+
+        if (projectGrid) {
+            projectGrid.style.display = 'none';
+        }
+
+        if (projectHeading) {
+            projectHeading.style.display = 'none';
+        }
+
+        if (projectDetail) {
+            projectDetail.hidden = false;
+            projectDetail.removeAttribute('hidden');
+            projectDetail.style.display = 'block';
+        }
+
+        scrollToProjectSection();
+    }
+
+    window.openProjectDetailByIndex = openProjectDetail;
+
+    $(document).on('keydown', '.js-project-card', function (event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openProjectDetail($(this).data('project-index'));
+        }
     });
 
     $(document).on('click', '.js-back-projects', function () {
-        $('#project-detail').prop('hidden', true).empty();
-        $('#project-grid, .project-heading').show();
-        $('html, body').animate({ scrollTop: $('#project').offset().top - 75 }, 700, 'easeInOutExpo');
+        var projectGrid = document.getElementById('project-grid');
+        var projectHeading = document.querySelector('.project-heading');
+        var projectDetail = document.getElementById('project-detail');
+
+        if (projectDetail) {
+            projectDetail.hidden = true;
+            projectDetail.style.display = 'none';
+            projectDetail.innerHTML = '';
+        }
+
+        if (projectGrid) {
+            projectGrid.style.display = '';
+        }
+
+        if (projectHeading) {
+            projectHeading.style.display = '';
+        }
+
+        scrollToProjectSection();
     });
 
     // Facts counter
