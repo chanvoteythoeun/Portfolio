@@ -29,7 +29,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css?v=20260812-project-detail-page" rel="stylesheet">
+    <link href="css/style.css?v=20260812-mobile-filter-buttons" rel="stylesheet">
 </head>
 
 <body>
@@ -226,17 +226,16 @@
                     <h1 class="display-5 mb-5">My Projects ðŸŽ€</h1>
                 </div>
                 <div class="col-lg-6 text-lg-end">
-                    <ul class="list-inline mx-n3 mb-0" id="portfolio-flters">
-                        <li class="mx-3 active" data-filter="*">All Projects</li>
-                        <li class="mx-3" data-filter=".web-design">Web Design</li>
-                        <li class="mx-3" data-filter=".uiux">UI/UX Design</li>
-                        <li class="mx-3" data-filter=".iot">IoT Projects</li>
-                        <li class="mx-3" data-filter=".web-app">Web Application</li>
-                        <li class="mx-3" data-filter=".mobile">Mobile Application</li>
-                        <li class="mx-3" data-filter=".game">Game Projects</li>
-                        <li class="mx-3" data-filter=".personal">Personal Website</li>
-
-                    </ul>
+                    <div class="list-inline mx-n3 mb-0" id="portfolio-flters">
+                        <button class="mx-3 active" type="button" data-filter="*">All Projects</button>
+                        <button class="mx-3" type="button" data-filter=".web-design">Web Design</button>
+                        <button class="mx-3" type="button" data-filter=".uiux">UI/UX Design</button>
+                        <button class="mx-3" type="button" data-filter=".iot">IoT Projects</button>
+                        <button class="mx-3" type="button" data-filter=".web-app">Web Application</button>
+                        <button class="mx-3" type="button" data-filter=".mobile">Mobile Application</button>
+                        <button class="mx-3" type="button" data-filter=".game">Game Projects</button>
+                        <button class="mx-3" type="button" data-filter=".personal">Personal Website</button>
+                    </div>
                 </div>
             </div>
             <div class="row g-4 portfolio-container wow fadeInUp" id="project-grid" data-wow-delay="0.1s"></div>
@@ -391,7 +390,7 @@
     <script src="lib/lightbox/js/lightbox.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js?v=20260812-project-detail-page"></script>
+    <script src="js/main.js?v=20260812-mobile-filter-buttons"></script>
 </body>
 
 </html>

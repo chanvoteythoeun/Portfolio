@@ -469,20 +469,23 @@ p {
     animation-duration: .9s;
 }
 
-#portfolio-flters li {
+#portfolio-flters button {
     display: inline-block;
     margin-top: 8px;
     padding: 8px 16px;
     color: var(--muted);
     cursor: pointer;
+    appearance: none;
+    background: transparent;
     border: 1px solid transparent;
     border-radius: 999px;
     font-weight: 800;
+    touch-action: manipulation;
     transition: .25s ease;
 }
 
-#portfolio-flters li:hover,
-#portfolio-flters li.active {
+#portfolio-flters button:hover,
+#portfolio-flters button.active {
     color: var(--primary-dark);
     background: #ffe3f0;
     border-color: var(--border);
@@ -524,7 +527,7 @@ p {
     gap: 10px;
 }
 
-#portfolio-flters li {
+#portfolio-flters button {
     min-width: 126px;
     margin: 0 !important;
     padding: 11px 18px;
@@ -538,7 +541,7 @@ p {
     font-weight: 900;
 }
 
-#portfolio-flters li.active {
+#portfolio-flters button.active {
     color: #fff;
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     box-shadow: 0 16px 32px rgba(232, 62, 140, 0.28);
@@ -1964,7 +1967,22 @@ body::after {
     }
 
     #tools-grid.tools-grid .portfolio-btn {
-        display: none !important;
+        display: flex !important;
+        opacity: 1 !important;
+        padding: 12px !important;
+        background: linear-gradient(180deg, rgba(232, 62, 140, 0.06), rgba(143, 75, 216, 0.42)) !important;
+        pointer-events: none !important;
+    }
+
+    #tools-grid.tools-grid .portfolio-btn h5 {
+        padding: 8px 10px !important;
+        font-size: .78rem !important;
+        line-height: 1.15 !important;
+        color: #fff !important;
+        background: linear-gradient(135deg, rgba(232, 62, 140, .92), rgba(143, 75, 216, .9)) !important;
+        border: 1px solid rgba(255, 255, 255, .45) !important;
+        box-shadow: 0 10px 22px rgba(232, 62, 140, .18) !important;
+        overflow-wrap: anywhere !important;
     }
 }
 

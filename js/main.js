@@ -576,18 +576,21 @@
 
 
     // Portfolio filter
-    $('#portfolio-flters li').on('click', function () {
-        var filter = $(this).data('filter');
+    document.querySelectorAll('#portfolio-flters button').forEach(function (button) {
+        button.addEventListener('click', function () {
+            var filter = button.getAttribute('data-filter');
+            var projectItems = document.querySelectorAll('#project-grid .portfolio-item');
 
-        $("#portfolio-flters li").removeClass('active');
-        $(this).addClass('active');
+            document.querySelectorAll('#portfolio-flters button').forEach(function (filterButton) {
+                filterButton.classList.remove('active');
+            });
+            button.classList.add('active');
 
-        if (filter === '*') {
-            $('#project-grid .portfolio-item').show();
-        } else {
-            $('#project-grid .portfolio-item').hide();
-            $('#project-grid ' + filter).show();
-        }
+            projectItems.forEach(function (item) {
+                var shouldShow = filter === '*' || item.matches(filter);
+                item.style.display = shouldShow ? '' : 'none';
+            });
+        });
     });
 
 
