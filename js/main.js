@@ -439,7 +439,7 @@
 
     function renderTools() {
         $('#tools-grid').html(tools.map(function (tool) {
-            return '<div class="col-lg-4 col-md-6 portfolio-item second">' +
+            return '<div class="col-xl-2 col-lg-3 col-md-4 col-6 portfolio-item second">' +
                 '<div class="portfolio-img rounded overflow-hidden">' +
                 '<img class="img-fluid" src="' + tool.image + '" alt="' + escapeHtml(tool.name) + ' Logo" width="150">' +
                 '<div class="portfolio-btn"><h5>' + escapeHtml(tool.name) + '</h5></div>' +
@@ -452,7 +452,7 @@
         $('#project-grid').html(projects.map(function (project) {
             var index = projects.indexOf(project);
             var image = escapeHtml(project.image);
-            return '<div class="col-xl-3 col-lg-3 col-md-6 portfolio-item ' + project.category + '">' +
+            return '<div class="col-xl-4 col-lg-4 col-md-6 col-12 portfolio-item ' + project.category + '">' +
                 '<div class="project-card">' +
                 '<div class="project-image">' +
                 '<span class="project-badge">' + escapeHtml(project.badge) + '</span>' +
@@ -726,17 +726,38 @@ document.addEventListener('DOMContentLoaded', function () {
         brand.textContent = '\u7F8E\u4E3D\uD83E\uDD0D\uD83C\uDF3C';
     });
 
+    var headingUpdates = [
+        ['#about h1', 'About Me \uD83C\uDF37'],
+        ['#skill .col-lg-6:nth-child(1) h1', 'Skills \u2728'],
+        ['#skill .col-lg-6:nth-child(1) h3', 'Profesional Skills \uD83D\uDCBB'],
+        ['#skill .tools-section h3', 'Machine Learning and Tools \uD83D\uDEE0\uFE0F'],
+        ['#project .project-heading h1', 'My Projects \uD83C\uDF80'],
+        ['#contact h1', 'Contact \uD83D\uDC8C']
+    ];
+
+    headingUpdates.forEach(function (item) {
+        var element = document.querySelector(item[0]);
+        if (element) {
+            element.textContent = item[1];
+        }
+    });
+
     var hello = document.querySelector('#home h3.text-black');
     if (hello) {
         hello.textContent = 'Hello! I`m \uD83C\uDF38';
     }
 
     var badges = document.querySelectorAll('.hero-badges span');
-    var badgeText = ['\uD83D\uDC97 Creative', '\u2728 Developer', '\uD83C\uDF80 IT Support'];
+    var badgeText = ['\uD83D\uDC97 Creative', '\u2728 Developer', '\uD83C\uDF80 IT Support', '\uD83D\uDCBB Software Developer'];
     badges.forEach(function (badge, index) {
         if (badgeText[index]) {
             badge.textContent = badgeText[index];
         }
     });
+
+    var contactButton = document.querySelector('#home a[data-scroll-target="#contact"]');
+    if (contactButton) {
+        contactButton.textContent = 'Contact Me \uD83D\uDC8C';
+    }
 }
 );

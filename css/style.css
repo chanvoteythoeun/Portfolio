@@ -1597,6 +1597,25 @@ body::after {
 }
 
 @media (max-width: 991.98px) {
+    .tools-section h3 {
+        max-width: 100%;
+        font-size: clamp(1.75rem, 8vw, 2.4rem);
+        line-height: 1.15;
+        overflow-wrap: anywhere;
+    }
+
+    .tools-grid {
+        justify-content: center;
+    }
+
+    .tools-grid .portfolio-item,
+    .tools-grid .portfolio-item.col-lg-4,
+    .tools-grid .portfolio-item.col-md-6 {
+        flex: 0 0 33.333333% !important;
+        width: 33.333333% !important;
+        max-width: 33.333333% !important;
+    }
+
     .navbar {
         top: 8px;
         width: calc(100% - 18px);
@@ -1748,19 +1767,32 @@ body::after {
         font-size: clamp(2.15rem, 14vw, 3rem);
     }
 
-    .tools-grid .portfolio-item {
+    #home .display-3 {
+        max-width: 100%;
+        margin-inline: auto;
+        font-size: clamp(2.35rem, 11vw, 3.2rem);
+        line-height: 1.05;
+        word-break: normal;
+        overflow-wrap: normal;
+        text-wrap: balance;
+    }
+
+    .tools-grid .portfolio-item,
+    .tools-grid .portfolio-item.col-lg-4,
+    .tools-grid .portfolio-item.col-md-6 {
         flex-basis: 50% !important;
         width: 50% !important;
         max-width: 50% !important;
     }
 
     .tools-grid .portfolio-img {
-        min-height: 155px;
+        min-height: 140px;
+        padding: 18px;
     }
 
     .tools-grid .portfolio-img img {
-        width: 78px !important;
-        height: 78px !important;
+        width: 72px !important;
+        height: 72px !important;
     }
 
     .detail-panel {
@@ -1840,9 +1872,201 @@ body::after {
 }
 
 @media (max-width: 380px) {
-    .tools-grid .portfolio-item {
+    .tools-grid .portfolio-item,
+    .tools-grid .portfolio-item.col-lg-4,
+    .tools-grid .portfolio-item.col-md-6 {
         flex-basis: 100% !important;
         width: 100% !important;
         max-width: 100% !important;
+    }
+}
+
+/********** Final Mobile Responsive Hotfix **********/
+@media only screen and (max-width: 767.98px) {
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .container,
+    .container-xxl {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    #skill .tools-section {
+        padding-inline: 0;
+    }
+
+    #skill .tools-section h3 {
+        margin-bottom: 1.5rem !important;
+        font-size: 1.85rem !important;
+        line-height: 1.18 !important;
+        word-break: normal;
+        overflow-wrap: anywhere;
+    }
+
+    #tools-grid.tools-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 16px !important;
+        margin: 0 !important;
+    }
+
+    #tools-grid.tools-grid::before,
+    #tools-grid.tools-grid::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    #tools-grid.tools-grid > .portfolio-item {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        flex: none !important;
+        padding: 0 !important;
+    }
+
+    #tools-grid.tools-grid .portfolio-img {
+        min-height: 132px !important;
+        padding: 16px !important;
+        border-radius: 18px !important;
+    }
+
+    #tools-grid.tools-grid .portfolio-img img {
+        width: 68px !important;
+        height: 68px !important;
+        max-width: 68px !important;
+        object-fit: contain !important;
+    }
+
+    #tools-grid.tools-grid .portfolio-btn {
+        display: none !important;
+    }
+}
+
+/********** Final Hero Mobile Type Hotfix **********/
+@media only screen and (max-width: 767.98px) {
+    #home .display-3 {
+        display: block !important;
+        width: min(100%, 340px) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        font-size: clamp(2.45rem, 10.5vw, 3.15rem) !important;
+        line-height: 1.05 !important;
+        letter-spacing: 0 !important;
+        word-break: keep-all !important;
+        overflow-wrap: normal !important;
+        white-space: normal !important;
+        text-align: center !important;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    #tools-grid.tools-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/********** Final Project Mobile Hotfix **********/
+@media only screen and (max-width: 767.98px) {
+    #project .container {
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+    }
+
+    #project-grid.portfolio-container,
+    #project-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 22px !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+    #project-grid::before,
+    #project-grid::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    #project-grid > .portfolio-item,
+    #project-grid > .portfolio-item[class*="col-"] {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        flex: none !important;
+        padding: 0 !important;
+    }
+
+    #project-grid .project-card {
+        min-height: auto !important;
+        width: 100% !important;
+        padding: 14px !important;
+        border-radius: 20px !important;
+    }
+
+    #project-grid .project-image {
+        aspect-ratio: 16 / 9 !important;
+    }
+
+    #project-grid .project-content {
+        padding: 16px 4px 4px !important;
+    }
+
+    #project-grid .project-content h3 {
+        font-size: 1.25rem !important;
+        line-height: 1.25 !important;
+        word-break: normal !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    #project-grid .project-content p {
+        min-height: auto !important;
+        display: block !important;
+        overflow: visible !important;
+        font-size: .95rem !important;
+        line-height: 1.55 !important;
+        -webkit-line-clamp: unset !important;
+    }
+
+    #project-grid .project-footer {
+        align-items: flex-end !important;
+        gap: 12px !important;
+    }
+
+    #project-grid .project-tech {
+        display: flex !important;
+        flex: 1 1 auto !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        min-width: 0 !important;
+    }
+
+    #project-grid .project-tech span {
+        display: inline-flex !important;
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        white-space: normal !important;
+        word-break: normal !important;
+        overflow-wrap: anywhere !important;
+        writing-mode: horizontal-tb !important;
+        text-orientation: mixed !important;
+        padding: 7px 10px !important;
+        font-size: .76rem !important;
+        line-height: 1.2 !important;
+    }
+
+    #project-grid .project-arrow {
+        width: 44px !important;
+        height: 44px !important;
+        flex: 0 0 44px !important;
     }
 }
